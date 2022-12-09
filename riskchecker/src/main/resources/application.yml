@@ -1,0 +1,12 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: payment-risk-engine
+  kafka:
+    consumer:
+      bootstrap-servers:
+       - localhost:9092  
+      key-deserializer: org.springframework.kafka.support.serializer.StringSerializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonSerializer  
+      auto-offset-reset: latest
