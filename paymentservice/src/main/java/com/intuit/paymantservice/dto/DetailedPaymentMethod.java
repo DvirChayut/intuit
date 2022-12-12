@@ -1,4 +1,4 @@
-package com.intuit.paymantservice.model;
+package com.intuit.paymantservice.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

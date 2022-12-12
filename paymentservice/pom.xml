@@ -11,10 +11,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.intuit</groupId>
 	<artifactId>paymentservice</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-
 	<name>paymentservice</name>
 	
 	<dependencies>

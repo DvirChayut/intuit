@@ -1,5 +1,4 @@
----
-version: '2'
+version: "2"
 
 services:
   postgres:
@@ -10,7 +9,7 @@ services:
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
     ports:
-      - "5432:5432"
+      - 5432:5432
     networks:
       - postgres-nw
     restart: unless-stopped  
@@ -22,7 +21,7 @@ services:
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
       PGADMIN_CONFIG_SERVER_MODE: 'False'
     ports:
-      - "5050:80"
+      - 5050:80
     networks:
       - postgres-nw
     restart: unless-stopped
@@ -33,11 +32,11 @@ services:
   kafka:
     image: wurstmeister/kafka
     ports:
-    - "9092:9092"
+    - 9092:9092
     environment:
       KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'false'
+      KAFKA_CREATE_TOPICS: payment-topic:1:1
 networks:
   postgres-nw:
     driver: bridge

@@ -7,12 +7,12 @@ import org.springframework.stereotype.Component;
 import com.intuit.paymantservice.model.PaymentRequest;
 
 @Component
-public class PaymentKafkaProducer implements Producer<PaymentRequest>{
+public class KafkaPaymentProducer implements Producer<PaymentRequest>{
 
 	private final KafkaTemplate<String, PaymentRequest> kafkaTemplate;
 	private final String paymentTopic;
 	
-	public PaymentKafkaProducer(KafkaTemplate<String, PaymentRequest> kafkaTemplate,
+	public KafkaPaymentProducer(KafkaTemplate<String, PaymentRequest> kafkaTemplate,
 			@Value("${payment.topic.name}") String paymentTopic) {
 		this.paymentTopic = paymentTopic;
 		this.kafkaTemplate = kafkaTemplate;

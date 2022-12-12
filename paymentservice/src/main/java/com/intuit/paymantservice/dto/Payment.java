@@ -1,6 +1,7 @@
-package com.intuit.paymantservice.model;
+package com.intuit.paymantservice.dto;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,11 +25,19 @@ public class Payment {
 	 		sequenceName = "payment_id_sequence")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,
 			generator = "payment_id_sequence")
+	@Column(name = "id", updatable = false)
 	private Integer id;
+	
+	@Column(name = "amount", nullable = false)
 	private float amount;
+
+	@Column(name = "currency", nullable = false, columnDefinition = "Text")
 	private String currency;
+	
 	private String payeeId;
+	
 	private String userId;
+	
 	private String paymentMethod;
 	
 }
