@@ -24,7 +24,7 @@ public class KafkaPaymentListener {
 	}
 
 	@KafkaListener(topics = "${spring.kafka.consumer.topic}")
-	public void receive(@Payload PaymentRequest paymentRequest, 
+	public void receivePayment(@Payload PaymentRequest paymentRequest, 
 			@Headers MessageHeaders headers,
 			Acknowledgment acknowledgment) {
 		log.info("received data='{}'", paymentRequest);

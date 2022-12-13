@@ -37,6 +37,7 @@ public class KafkaConsumerConfig {
 	        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
 	        props.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
 	        props.put(JsonDeserializer.USE_TYPE_INFO_HEADERS, "false");
+	        props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
 	        return props;
 	    }
 
@@ -55,6 +56,7 @@ public class KafkaConsumerConfig {
 	        factory.setConsumerFactory(consumerFactory());
 	        factory.getContainerProperties().setAckMode(AckMode.MANUAL_IMMEDIATE);
 	        factory.getContainerProperties().setSyncCommits(true);
+	       
 	        
 	        return factory;
 	    }

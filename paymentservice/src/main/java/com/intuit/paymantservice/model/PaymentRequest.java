@@ -4,6 +4,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.intuit.paymantservice.validator.Currency;
+
 import lombok.Data;
 
 @Data
@@ -13,6 +15,7 @@ public class PaymentRequest {
 	private float amount;
 	@NotBlank(message = "Invalid Currency: Empty Currency")
 	@NotNull(message = "Invalid Currency: Currency is NULL")
+	@Currency()
 	private String currency;
 	@NotBlank(message = "Invalid PayeeId: Empty PayeeId")
 	@NotNull(message = "Invalid PayeeId: PayeeId is NULL")
