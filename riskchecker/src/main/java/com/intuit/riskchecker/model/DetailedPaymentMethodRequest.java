@@ -1,4 +1,4 @@
-package com.intuit.paymantservice.model;
+package com.intuit.riskchecker.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

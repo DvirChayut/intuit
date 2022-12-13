@@ -5,9 +5,8 @@ spring:
     name: payment-service
   kafka:
     producer:
-      bootstrap-servers:       - localhost:9092  
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer  
+      topic: payment-topic 
+      bootstrap-servers: localhost:9092  
   datasource:
     password: password
     url: jdbc:postgresql://localhost:5432/payment-system
@@ -21,7 +20,3 @@ spring:
         format_sql: true
     show-sql: true
     
-payment:
-  topic:
-   name: payment-topic
-

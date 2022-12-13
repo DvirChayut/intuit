@@ -1,11 +1,13 @@
 package com.intuit.riskchecker.client;
 
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import com.intuit.riskchecker.model.PaymentRequest;
 import com.intuit.riskchecker.model.PaymentStatus;
 
+@Primary
 @Component
 public class PaymentRiskCheckerMockImpl implements PaymentRiskChecker{
 

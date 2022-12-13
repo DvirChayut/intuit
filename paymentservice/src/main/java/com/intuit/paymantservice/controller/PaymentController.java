@@ -34,7 +34,7 @@ public class PaymentController {
 	@PostMapping
 	public ResponseEntity<String> createPayment(@Valid @RequestBody PaymentRequest paymentRequest) {
 		log.info("new payment: {}", paymentRequest);
-		
+		paymentService.sendPaymentToConfirmation(paymentRequest);
 		
 		return ResponseEntity.status(HttpStatus.OK).body("Your apllication recived and being handled!");
 	}

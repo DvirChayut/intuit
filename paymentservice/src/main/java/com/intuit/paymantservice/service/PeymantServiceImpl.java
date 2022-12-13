@@ -22,9 +22,6 @@ public class PeymantServiceImpl implements PaymentService{
 	private final DetailedPaymentMethodRepository detailedPaymentMethodRepository;
 	private final Producer<PaymentRequest> producer;
 	
-	
-	
-
 
 	public PeymantServiceImpl(PayeeDetailsRepository payeeDetailsRepository,
 			DetailedPaymentMethodRepository detailedPaymentMethodRepository,
@@ -36,7 +33,7 @@ public class PeymantServiceImpl implements PaymentService{
 
 	@Override
 	public void sendPaymentToConfirmation(PaymentRequest payment) {
-		//producer.sendMessage(payment);
+		producer.sendMessage(payment);
 	}
 
 	@Override
