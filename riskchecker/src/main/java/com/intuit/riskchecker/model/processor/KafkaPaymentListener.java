@@ -33,18 +33,20 @@ public class KafkaPaymentListener {
 			log.info("{}: {}", key, headers.get(key));
 		});
 		
-		PaymentStatus status = paymentRiskChecker.isPaymentApproved(paymentRequest).block().getBody();
-
-		if (status != null && status.isApproved()) {
-			// save to approved table
-			acknowledgment.acknowledge();
-		} else {
-			// save to unproved table
-			acknowledgment.acknowledge();
-		}
+		paymentRiskChecker.isPaymentApproved(paymentRequest).subscribe(
+			response -> {
+				PaymentStatus status = response.getBody();
+				if (status != null && status.isApproved()) {
+					// save to approved table
+					acknowledgment.acknowledge();
+				} else {
+					// save to unproved table
+					acknowledgment.acknowledge();
+					
+				}
+			}
 		
-		
+		);
 	}
 
-	
 }

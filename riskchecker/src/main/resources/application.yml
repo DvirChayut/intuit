@@ -8,5 +8,5 @@ spring:
       groupId: payment-group
       topic: payment-topic
       bootstrap-servers: localhost:9092  
-risk.engiene.service.url: https://payment-risk:8080/api/vi/check   
+risk.engiene.service.url: https://payment-risk:8080/api/v1/check   
     
