@@ -33,7 +33,7 @@ public class KafkaPaymentListener {
 			log.info("{}: {}", key, headers.get(key));
 		});
 		
-		PaymentStatus status = paymentRiskChecker.isPaymentApproved(paymentRequest);
+		PaymentStatus status = paymentRiskChecker.isPaymentApproved(paymentRequest).block();
 
 		if (status != null && status.isApproved()) {
 			// save to approved table
