@@ -3,8 +3,10 @@ package com.intuit.riskchecker.client;
 import java.time.Duration;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -22,6 +24,8 @@ import reactor.util.retry.Retry;
 @Component
 public class CloudServicePaymentRiskChecker implements PaymentRiskChecker{
 
+	private static final ParameterizedTypeReference<ResponseEntity<PaymentStatus>> IS_PAYMENT_APPROVED_RESPONSE_TIPE = new ParameterizedTypeReference<>() {};
+	
 	private final WebClient webClient;
 	
 	private final String serviceUrl;
@@ -35,7 +39,7 @@ public class CloudServicePaymentRiskChecker implements PaymentRiskChecker{
 
 
 	@Override
-	public Mono<PaymentStatus> isPaymentApproved(PaymentRequest payment) {
+	public Mono<ResponseEntity<PaymentStatus>> isPaymentApproved(PaymentRequest payment) {
 
 		return webClient
 				.post()
@@ -52,7 +56,7 @@ public class CloudServicePaymentRiskChecker implements PaymentRiskChecker{
 					return clientResponse.bodyToMono(String.class).flatMap(errorMessage -> 
 						Mono.error(new RiskCheckServiceServerException("Server exception in RiskChecek service: " + errorMessage, clientResponse.statusCode().value())));									
 				})
-				.bodyToMono(PaymentStatus.class)
+				.bodyToMono(IS_PAYMENT_APPROVED_RESPONSE_TIPE)
 				.retryWhen(retrySpec());
 		
 	}	
