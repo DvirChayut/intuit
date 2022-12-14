@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClientRequestException;
 
 import com.intuit.riskchecker.exception.client.RiskCheckServiceClientException;
 import com.intuit.riskchecker.exception.client.RiskCheckServiceServerException;
@@ -63,7 +64,7 @@ public class CloudServicePaymentRiskChecker implements PaymentRiskChecker{
 	
 	private static Retry retrySpec() {
 		return Retry.fixedDelay(3, Duration.ofSeconds(1))
-			    .filter(ex -> ex instanceof RiskCheckServiceServerException )
+			    .filter(ex -> ex instanceof WebClientRequestException )
 				.onRetryExhaustedThrow((retryBackoffSpec, retrySignal) -> Exceptions.propagate(retrySignal.failure())); 
 	}
 }
