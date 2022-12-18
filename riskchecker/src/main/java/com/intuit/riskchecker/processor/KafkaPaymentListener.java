@@ -1,4 +1,4 @@
-package com.intuit.riskchecker.model.processor;
+package com.intuit.riskchecker.processor;
 
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;

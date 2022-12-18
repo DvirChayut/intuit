@@ -1,4 +1,4 @@
-package com.intuit.riskchecker.model.processor;
+package com.intuit.riskchecker.processor;
 
 import java.util.HashMap;
 import java.util.Map;
